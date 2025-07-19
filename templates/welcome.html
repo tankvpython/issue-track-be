@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | Issue Tracker Admin Panel</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(0,0,0,0.3);
+            padding: 40px 60px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .login-btn {
+            background: #fff;
+            color: #2193b0;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .login-btn:hover {
+            background: #2193b0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Issue Tracker Admin Panel</h1>
+        <p>Manage issues, tags, priorities, logs, and invitations efficiently.</p>
+        <a href="/admin/login/"><button class="login-btn">Login</button></a>
+    </div>
+</body>
+</html>

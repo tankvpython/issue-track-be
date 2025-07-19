@@ -1,0 +1,45 @@
+# Mini Issue Tracker — Django + DRF Backend
+
+## Context
+You’re building the backend for a mini issue‑tracker (like Jira) using Django and Django REST Framework.  
+The project already exists at `mini_issue_track_be/` with a Django project scaffold. You need to add one or more apps to provide:
+
+1. JWT‑based authentication (login, register, token refresh)
+2. CRUD APIs for Issues, Tags, Priority, IssueLogs, and Team Invitations
+3. Endpoint to list all issues assigned to the current user
+4. Simple permission rules:
+   - Only issue creator can edit or delete that issue
+   - Only invited team members can view or create issues on a board
+5. Invitation flow: send teammates an email invite to join the board
+6. Models and fields:
+   - **Issue**: title, description (supports markdown), status (OPEN, IN_PROGRESS, CLOSED), priority (LOW, MEDIUM, HIGH), tags (M2M), created_by, updated_by, assigned_to (ForeignKey to User), created_at, updated_at
+   - **Tag**: name, slug
+   - **Priority**: name, level (integer)
+   - **IssueLog**: issue (FK), action (CREATED, UPDATED, STATUS_CHANGED, COMMENTED, DELETED), performed_by, timestamp, notes
+   - **Invitation**: board (if multi‑board; optional), email, token, invited_by, accepted (bool), invited_at, accepted_at
+7. Serializers, viewsets, and router registrations for all models
+8. Email sending setup for invitations (using Django’s EmailMessage or an SMTP backend)
+9. JWT authentication endpoints (using `djangorestframework-simplejwt`)
+10. Add all apps to `INSTALLED_APPS` and configure URLs in `settings.py` and `urls.py`
+
+## Task
+Using Django & DRF:
+
+1. Define the models above in a new app (e.g. `issues`).
+2. Create serializers for each model.
+3. Create `ModelViewSet` or `GenericAPIView` classes to provide:
+   - `/api/auth/` for registration, login, token refresh (JWT)
+   - `/api/issues/`
+   - `/api/tags/`
+   - `/api/priorities/`
+   - `/api/issue-logs/`
+   - `/api/invitations/`
+4. Wire up routers in `mini_issue_track_be/urls.py`.
+5. Implement permissions so that:
+   - Unauthenticated users can only register/login.
+   - Authenticated users can view all issues, but only update/delete issues they created.
+   - Only invited users can access the issue board.
+6. Implement an invitation email trigger on `InvitationViewSet.create()`.
+7. Write basic tests (optional but preferred).
+
+Make sure your code is clean, follows DRF best practices, and uses JWT for API security.
